@@ -11,18 +11,51 @@ using System.IO.Compression;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using FireSharp.Response;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace UpdationTool
 {
     public partial class UpdationTool : Form
     {
+        #region Private Varibles
         string sUrl;
         string fPath;
+        string AuthSecret = "tBwFbHgvRH17fKPMqvQI2AG2QwTU5sH0k3QHrlpS";
+        string BasePath = "https://fireapp-5b98f.firebaseio.com/";
+        string sTable = "UpdatesLink/";
+        IFirebaseClient client;
+        IFirebaseConfig config;
+        #endregion
+
+        #region Constructor
         public UpdationTool()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Methods
+        public static bool CheckInternet()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Events
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -33,11 +66,13 @@ namespace UpdationTool
             try
             {
                 Process[] myProcList = Process.GetProcessesByName("MdiCommon");
-                foreach (Process Target in myProcList)
+                if (myProcList.Count() > 0)
                 {
-                    Target.Kill();
+                    foreach (Process Target in myProcList)
+                    {
+                        Target.Kill();
+                    }
                 }
-                sUrl = "https://drive.google.com/file/d/1Jg4vGgzIlBFRDFiutYe9NleALf8W8xTY/view?usp=sharing";
                 string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 fPath = path + "\\UpdationTool.zip";
                 string directoryPath = path + "\\UpdationTool";
@@ -79,5 +114,44 @@ namespace UpdationTool
             }
 
         }
+
+        private void UpdationTool_Load(object sender, EventArgs e)
+        {
+            if(CheckInternet())
+            {
+                List<UpdateItem> updateItems = new List<UpdateItem>();
+                config = new FirebaseConfig
+                {
+                    AuthSecret = AuthSecret,
+                    BasePath = BasePath
+                };
+                client = new FireSharp.FirebaseClient(config);
+                FirebaseResponse response = client.Get(sTable);
+                dynamic data = JsonConvert.DeserializeObject<dynamic>(response.Body);
+                if (data != null)
+                {
+                    foreach (var item in data)
+                    {
+                        updateItems.Add(JsonConvert.DeserializeObject<UpdateItem>(((JProperty)item).Value.ToString()));
+                    }
+                }
+                if (updateItems.Count() > 0)
+                {
+                    sUrl = updateItems.FirstOrDefault().UpdationLink;
+                }
+                else
+                {
+                    MessageBox.Show("No updation available");
+                    this.Close();
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Please check internet connection and try later.");
+                this.Close();
+            }
+        }
+        #endregion
     }
 }
