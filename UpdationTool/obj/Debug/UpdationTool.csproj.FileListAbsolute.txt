@@ -1,0 +1,11 @@
+c:\users\mictco\documents\visual studio 2012\Projects\UpdationTool\UpdationTool\bin\Debug\UpdationTool.exe.config
+E:\Project\UpdationTool\UpdationTool\bin\Debug\UpdationTool.exe.config
+E:\Project\UpdationTool\UpdationTool\bin\Debug\UpdationTool.exe
+E:\Project\UpdationTool\UpdationTool\bin\Debug\UpdationTool.pdb
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.UpdationTool.resources
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.Properties.Resources.resources
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.GenerateResource.cache
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.CoreCompileInputs.cache
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.exe
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.pdb
+E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csprojAssemblyReference.cache
