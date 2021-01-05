@@ -8,7 +8,7 @@ namespace UpdationTool
 {
     public class UpdateItem
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string UpdationLink { get; set; }
     }
 }

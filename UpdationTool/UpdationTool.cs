@@ -25,8 +25,8 @@ namespace UpdationTool
         #region Private Varibles
         string sUrl;
         string fPath;
-        string AuthSecret = "tBwFbHgvRH17fKPMqvQI2AG2QwTU5sH0k3QHrlpS";
-        string BasePath = "https://fireapp-5b98f.firebaseio.com/";
+        string AuthSecret = "gQln6cPDx07ObhbkFPQ4ZkfGP1Bvqnp2NUb5UIuq";
+        string BasePath = "https://mictcoexeupdate-default-rtdb.firebaseio.com/";
         string sTable = "UpdatesLink/";
         IFirebaseClient client;
         IFirebaseConfig config;
@@ -76,7 +76,7 @@ namespace UpdationTool
                 string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 fPath = path + "\\UpdationTool.zip";
                 string directoryPath = path + "\\UpdationTool";
-                if (Directory.Exists(directoryPath)) { Directory.Delete(directoryPath); }
+                if (Directory.Exists(directoryPath)) { Directory.Delete(directoryPath,true); }
                 FileDownloader.DownloadFileFromURLToPath(sUrl, fPath);
                 if (ExtractFile(fPath, directoryPath))
                 {
@@ -85,15 +85,24 @@ namespace UpdationTool
                     FileInfo[] files = dtry.GetFiles();
                     foreach (FileInfo item in files)
                     {
-                        string file = path + "\\" + item.ToString();
-                        //Do your job with "file"  
-                        string str = path + "\\UpdationTool\\" + item.ToString();
-                        FileInfo fInfo = new FileInfo(str);
-                        // replace the file. 
-                        //Thread.Sleep(5000);
-                        File.Copy(str, file, true);
+                        try
+                        {
+                            string file = path + "\\" + item.ToString();
+                            //Do your job with "file"  
+                            string str = path + "\\UpdationTool\\" + item.ToString();
+                            FileInfo fInfo = new FileInfo(str);
+                            // replace the file. 
+                            //Thread.Sleep(5000);
+                            File.Copy(str, file, true);
+                        }
+                        catch (Exception EX)
+                        {
+                            MessageBox.Show(EX.Message);
+                        }
                     }
                     MessageBox.Show("Updation completed");
+                    Process.Start("MdiCommon.exe");
+                    this.Close();
                 }
             }
             catch (Exception ex)
