@@ -25,8 +25,8 @@ namespace UpdationTool
         #region Private Varibles
         string sUrl;
         string fPath;
-        string AuthSecret = "gQln6cPDx07ObhbkFPQ4ZkfGP1Bvqnp2NUb5UIuq";
-        string BasePath = "https://mictcoexeupdate-default-rtdb.firebaseio.com/";
+        string AuthSecret = "3ystAelAhBReSghn2jFzBM5A7YPOSlJssGn4kIkV";
+        string BasePath = "https://ashpro-42612-default-rtdb.firebaseio.com/";
         string sTable = "UpdatesLink/";
         IFirebaseClient client;
         IFirebaseConfig config;
@@ -65,6 +65,7 @@ namespace UpdationTool
         {
             try
             {
+                Thread.Sleep(3000);
                 Process[] myProcList = Process.GetProcessesByName("MdiCommon");
                 if (myProcList.Count() > 0)
                 {
@@ -73,11 +74,16 @@ namespace UpdationTool
                         Target.Kill();
                     }
                 }
+                Thread.Sleep(3000);
+                lblProgress.Text = "Please wait....Process is starting";
                 string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 fPath = path + "\\UpdationTool.zip";
                 string directoryPath = path + "\\UpdationTool";
                 if (Directory.Exists(directoryPath)) { Directory.Delete(directoryPath,true); }
                 FileDownloader.DownloadFileFromURLToPath(sUrl, fPath);
+                Thread.Sleep(3000);
+                pbUpdation.Value = 10;
+                lblProgress.Text = pbUpdation.Value.ToString() + "%";
                 if (ExtractFile(fPath, directoryPath))
                 {
                     File.Delete(fPath);
@@ -87,6 +93,9 @@ namespace UpdationTool
                     {
                         try
                         {
+                            Thread.Sleep(3000);
+                            pbUpdation.Value = pbUpdation.Value >= 80 ? 80 : pbUpdation.Value + 10;
+                            lblProgress.Text = pbUpdation.Value.ToString() + "%";
                             string file = path + "\\" + item.ToString();
                             //Do your job with "file"  
                             string str = path + "\\UpdationTool\\" + item.ToString();
@@ -94,12 +103,18 @@ namespace UpdationTool
                             // replace the file. 
                             //Thread.Sleep(5000);
                             File.Copy(str, file, true);
+                            Thread.Sleep(3000);
+                            pbUpdation.Value = pbUpdation.Value >= 80 ? 80 : pbUpdation.Value + 10;
+                            lblProgress.Text = pbUpdation.Value.ToString() + "%";
                         }
                         catch (Exception EX)
                         {
                             MessageBox.Show(EX.Message);
                         }
                     }
+                    Thread.Sleep(3000);
+                    pbUpdation.Value = 100;
+                    lblProgress.Text = pbUpdation.Value.ToString() + "%";
                     MessageBox.Show("Updation completed");
                     Process.Start("MdiCommon.exe");
                     this.Close();

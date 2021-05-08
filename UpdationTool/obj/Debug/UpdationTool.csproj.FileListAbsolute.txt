@@ -17,3 +17,22 @@ E:\Project\UpdationTool\UpdationTool\bin\Debug\System.Net.Http.Primitives.xml
 E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.App.config
 E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.CopyComplete
 E:\Project\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.Fody.CopyLocal.cache
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\UpdationTool.exe.config
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\UpdationTool.exe
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\UpdationTool.pdb
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\Microsoft.Threading.Tasks.xml
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\Newtonsoft.Json.xml
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\System.Net.Http.Extensions.xml
+D:\Updation Tool\UpdationTool\UpdationTool\bin\Debug\System.Net.Http.Primitives.xml
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.App.config
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csprojAssemblyReference.cache
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.UpdationTool.resources
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.Properties.Resources.resources
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.GenerateResource.cache
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.CoreCompileInputs.cache
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.Fody.CopyLocal.cache
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.csproj.CopyComplete
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.exe
+D:\Updation Tool\UpdationTool\UpdationTool\obj\Debug\UpdationTool.pdb
